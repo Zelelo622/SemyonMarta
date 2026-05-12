@@ -1,0 +1,246 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --paper: #f5ebdc;
+    --paper-2: #efe3ce;
+    --red: #b81e26;
+    --red-deep: #9a1820;
+    --ink: #1a1614;
+  }
+
+  html,
+  body,
+  #root {
+    min-height: 100%;
+    background: var(--paper);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    font-family: 'PT Serif', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.65;
+    overscroll-behavior: none;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    background-image: radial-gradient(rgba(154, 24, 32, 0.05) 1px, transparent 1px),
+      radial-gradient(rgba(26, 22, 20, 0.025) 1px, transparent 1px);
+    background-size: 28px 28px, 17px 17px;
+    background-position: 0 0, 8px 8px;
+    mix-blend-mode: multiply;
+    opacity: 0.5;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence baseFrequency='0.85' numOctaves='2' seed='3'/><feColorMatrix values='0 0 0 0 0.4 0 0 0 0 0.2 0 0 0 0 0.1 0 0 0 0.45 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.18'/></svg>");
+    opacity: 0.35;
+    mix-blend-mode: multiply;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'IM Fell Double Pica SC', 'PT Serif', serif;
+    color: var(--red);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+
+  ::selection {
+    background: var(--red);
+    color: var(--paper);
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--paper);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(184, 30, 38, 0.35);
+    border: 2px solid var(--paper);
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--red);
+  }
+}
+
+@layer components {
+  .slide-base {
+    @apply relative w-full min-h-[100dvh] flex flex-col items-center justify-center
+           px-5 sm:px-8 py-16 sm:py-20 overflow-hidden;
+  }
+
+  .scroll-col {
+    @apply relative w-full max-w-[640px] mx-auto;
+  }
+
+  .chapter-mark {
+    @apply font-bukva text-rose uppercase
+           text-[11px] sm:text-[12px] tracking-widest3;
+  }
+
+  .chapter-title {
+    font-family: 'IM Fell Double Pica SC', serif;
+    @apply text-rose text-3xl sm:text-5xl leading-[1.05];
+  }
+
+  .body-slav {
+    @apply font-slav text-ink/85 text-[15px] sm:text-[17px] leading-relaxed;
+  }
+
+  .bukva-drop {
+    float: left;
+    font-family: 'IM Fell Double Pica SC', 'Lobster', serif;
+    color: var(--red);
+    font-size: 4.5em;
+    line-height: 0.82;
+    padding: 0.1em 0.12em 0 0;
+    margin-right: 0.08em;
+    margin-top: 0.02em;
+    text-shadow: 0 1px 0 rgba(154, 24, 32, 0.12);
+  }
+
+  .cartouche {
+    position: relative;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.35) 0%,
+      rgba(239, 227, 206, 0.55) 100%
+    );
+    border: 1px solid rgba(184, 30, 38, 0.35);
+    box-shadow:
+      0 0 0 4px var(--paper),
+      0 0 0 5px rgba(184, 30, 38, 0.22),
+      0 12px 30px -16px rgba(154, 24, 32, 0.35);
+  }
+
+  .btn-filled {
+    @apply inline-flex items-center justify-center
+           px-6 py-3 font-bukva uppercase
+           text-[13px] tracking-widest3
+           bg-rose text-ivory
+           border border-rose
+           transition-all duration-300 cursor-pointer;
+    box-shadow:
+      0 0 0 3px var(--paper),
+      0 0 0 4px var(--red),
+      0 8px 20px -10px rgba(154, 24, 32, 0.6);
+  }
+  .btn-filled:hover {
+    @apply bg-rose-deep;
+    transform: translateY(-1px);
+    box-shadow:
+      0 0 0 3px var(--paper),
+      0 0 0 4px var(--red-deep),
+      0 10px 24px -8px rgba(154, 24, 32, 0.7);
+  }
+  .btn-filled:disabled {
+    @apply opacity-60 cursor-not-allowed;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center
+           px-5 py-2.5 font-bukva uppercase
+           text-[12px] tracking-widest3
+           bg-transparent text-rose
+           border border-rose
+           transition-all duration-300 cursor-pointer;
+  }
+  .btn-outline:hover {
+    @apply bg-rose text-ivory;
+  }
+
+  .field-label {
+    @apply block mb-2 font-bukva uppercase text-[10px] sm:text-[11px]
+           tracking-widest3 text-ink-muted;
+  }
+
+  .field-input {
+    @apply w-full px-4 py-3 font-slav text-[15px]
+           bg-ivory text-ink
+           border border-rose/35
+           placeholder:text-ink-muted/55
+           focus:outline-none focus:border-rose focus:ring-2 focus:ring-rose/15
+           transition-colors duration-200;
+  }
+
+  .toggle-btn {
+    @apply flex-1 px-3 py-2.5 font-slav text-[13px]
+           bg-ivory text-ink
+           border border-rose/35
+           transition-all duration-200 cursor-pointer;
+  }
+  .toggle-btn:hover {
+    @apply border-rose/70 bg-cream;
+  }
+  .toggle-btn.active {
+    @apply bg-rose text-ivory border-rose;
+  }
+
+  .chip-btn {
+    @apply px-3.5 py-2 font-slav text-[13px]
+           bg-ivory text-ink
+           border border-rose/35
+           transition-all duration-200 cursor-pointer;
+  }
+  .chip-btn:hover {
+    @apply border-rose/70 bg-cream;
+  }
+  .chip-btn.active {
+    @apply bg-rose text-ivory border-rose;
+  }
+
+  .folk-card {
+    @apply bg-ivory border border-rose/25;
+    box-shadow:
+      0 0 0 4px rgba(245, 235, 220, 0.6),
+      0 0 0 5px rgba(184, 30, 38, 0.2),
+      0 14px 30px -18px rgba(26, 22, 20, 0.25);
+  }
+
+  .label-tiny {
+    @apply font-bukva uppercase text-[10px] sm:text-[11px]
+           tracking-widest3 text-rose;
+  }
+
+  .heading {
+    font-family: 'IM Fell Double Pica SC', serif;
+    @apply text-rose text-3xl sm:text-4xl leading-tight;
+  }
+
+  .body-text {
+    @apply font-slav text-ink/80 text-[14px] sm:text-[15px] leading-relaxed;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  .above-paper {
+    position: relative;
+    z-index: 3;
+  }
+}
