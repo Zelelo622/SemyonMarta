@@ -155,7 +155,7 @@ export default function DressCodeSlide({ visible }: SlideProps) {
         </div>
 
         {/* Иллюстрация: кокошник + лапти */}
-        <div className="grid grid-cols-2 gap-6 sm:gap-10 max-w-md mx-auto">
+        {/* <div className="grid grid-cols-2 gap-6 sm:gap-10 max-w-md mx-auto">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={visible ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
@@ -176,7 +176,7 @@ export default function DressCodeSlide({ visible }: SlideProps) {
             <Lapti className="w-28 sm:w-36" />
             <p className="font-marck text-rose mt-3 text-2xl">Лапти</p>
           </motion.div>
-        </div>
+        </div> */}
 
         <p className="text-center font-marck text-ink-muted text-xl mt-10 mb-6">
           ...а если приглянутся — то и обернуться!

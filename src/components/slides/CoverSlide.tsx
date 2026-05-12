@@ -7,6 +7,7 @@ import FolkFlower from '../FolkFlower'
 
 interface Props {
   playing: boolean
+  loading: boolean
   volume: number
   onMusicToggle: () => void
   onVolumeChange: (v: number) => void
@@ -44,7 +45,7 @@ function SpeakerIcon({ volume, onClick }: { volume: number; onClick: () => void 
   )
 }
 
-export default function CoverSlide({ playing, volume, onMusicToggle, onVolumeChange }: Props) {
+export default function CoverSlide({ playing, loading, volume, onMusicToggle, onVolumeChange }: Props) {
   const prevVolumeRef = useRef(0.3)
   return (
     <section
@@ -142,7 +143,7 @@ export default function CoverSlide({ playing, volume, onMusicToggle, onVolumeCha
           whileTap={{ scale: 0.98 }}
           className="btn-filled mt-10"
         >
-          {playing ? '❚❚  Остановить песнопения' : '▶  Включить песнопения'}
+          {loading ? '◌  Загрузка…' : playing ? '❚❚  Остановить песнопения' : 'Включить песнопения'}
         </motion.button>
 
         {/* Регулятор громкости */}

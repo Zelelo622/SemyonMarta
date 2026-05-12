@@ -16,30 +16,35 @@ export function useBackgroundMusic({
 }: Options) {
   const howlRef = useRef<Howl | null>(null)
   const [playing, setPlaying] = useState(false)
+  const [loading, setLoading] = useState(false)
   const [volume, setVolumeState] = useState(initialVolume)
 
   useEffect(() => {
+    // Web Audio API (default, no html5: true) uses a GainNode for volume —
+    // the only way to control volume programmatically on iOS Safari.
+    // html5: true forces <audio> whose .volume property is read-only on iOS.
     const sound = new Howl({
       src: [src],
       loop,
       volume: initialVolume,
-      html5: true,
       preload: true,
-      onplay: () => setPlaying(true),
+      onload: () => setLoading(false),
+      onplay: () => { setPlaying(true); setLoading(false) },
       onpause: () => setPlaying(false),
       onstop: () => setPlaying(false),
       onend: () => {
         if (!loop) setPlaying(false)
       },
       onloaderror: () => {
-        // silently fail — для разработки, когда файл ещё не положили
+        setLoading(false)
       },
       onplayerror: () => {
         setPlaying(false)
+        setLoading(false)
       },
     })
     howlRef.current = sound
-    if (autoplay) sound.play()
+    if (autoplay) { setLoading(true); sound.play() }
 
     return () => {
       sound.stop()
@@ -52,8 +57,13 @@ export function useBackgroundMusic({
   const toggle = () => {
     const h = howlRef.current
     if (!h) return
-    if (h.playing()) h.pause()
-    else h.play()
+    if (h.playing()) {
+      h.pause()
+    } else {
+      // If still buffering, show loading state
+      if (h.state() !== 'loaded') setLoading(true)
+      h.play()
+    }
   }
 
   const setVolume = (v: number) => {
@@ -62,5 +72,5 @@ export function useBackgroundMusic({
     howlRef.current?.volume(clamped)
   }
 
-  return { playing, volume, toggle, setVolume }
+  return { playing, loading, volume, toggle, setVolume }
 }

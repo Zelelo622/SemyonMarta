@@ -20,7 +20,7 @@ export default function App() {
   const containerRef = useRef<HTMLDivElement>(null)
   const { visible } = useSlideTracking(containerRef, TOTAL_SLIDES)
 
-  const { playing, volume, toggle, setVolume } = useBackgroundMusic({
+  const { playing, loading, volume, toggle, setVolume } = useBackgroundMusic({
     src: WEDDING.musicUrl,
     initialVolume: 0.3,
     loop: true,
@@ -37,7 +37,7 @@ export default function App() {
       /> */}
 
       <main ref={containerRef} className="relative">
-        <CoverSlide playing={playing} volume={volume} onMusicToggle={toggle} onVolumeChange={setVolume} />
+        <CoverSlide playing={playing} loading={loading} volume={volume} onMusicToggle={toggle} onVolumeChange={setVolume} />
         <DateSlide visible={visible.has(1)} />
         <VenueSlide visible={visible.has(2)} />
         <ProgramSlide visible={visible.has(3)} />
