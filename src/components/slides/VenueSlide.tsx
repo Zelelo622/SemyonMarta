@@ -12,11 +12,11 @@ export default function VenueSlide({ visible }: SlideProps) {
     >
       <FolkFlower
         className="absolute -top-4 -left-4 w-24 sm:w-32 opacity-50"
-        color="#B81E26"
+        color="#b32015"
       />
       <FolkFlower
         className="absolute -bottom-4 -right-4 w-24 sm:w-32 opacity-50 rotate-180"
-        color="#B81E26"
+        color="#b32015"
       />
 
       <motion.div

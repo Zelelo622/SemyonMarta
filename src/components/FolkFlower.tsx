@@ -5,7 +5,7 @@ interface Props {
 
 export default function FolkFlower({
   className = '',
-  color = '#B81E26',
+  color = '#b32015',
 }: Props) {
   return (
     <svg
@@ -29,7 +29,7 @@ export default function FolkFlower({
             />
           ))}
         </g>
-        <circle cx="50" cy="50" r="2.5" fill="#F5EBDC" />
+        <circle cx="50" cy="50" r="2.5" fill="#fff8f0" />
 
         <g fill={color} stroke="none">
           <path d="M50 22 C46 12 40 10 36 14 C40 18 46 22 50 22 Z" />

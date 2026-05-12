@@ -29,9 +29,9 @@
 @layer base {
   :root {
     color-scheme: light;
-    --paper: #f5ebdc;
+    --paper: #fff8f0;
     --paper-2: #efe3ce;
-    --red: #b81e26;
+    --red: #b32015;
     --red-deep: #9a1820;
     --ink: #1a1614;
   }

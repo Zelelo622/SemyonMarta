@@ -4,10 +4,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        ivory: '#F5EBDC',
+        ivory: '#fff8f0',
         cream: '#EFE3CE',
         parch: '#E8D9BE',
-        rose: '#B81E26',
+        rose: '#b32015',
         'rose-deep': '#9A1820',
         'rose-soft': '#C8424A',
         ink: '#1A1614',

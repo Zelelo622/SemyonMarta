@@ -10,19 +10,19 @@ export default function ContactsSlide({ visible }: SlideProps) {
     <section data-slide-index="7" className="slide-base above-paper bg-ivory">
       <FolkFlower
         className="absolute top-6 left-6 w-16 sm:w-24 opacity-70"
-        color="#B81E26"
+        color="#b32015"
       />
       <FolkFlower
         className="absolute top-6 right-6 w-16 sm:w-24 opacity-70"
-        color="#B81E26"
+        color="#b32015"
       />
       <FolkFlower
         className="absolute bottom-6 left-6 w-16 sm:w-24 opacity-70 rotate-180"
-        color="#B81E26"
+        color="#b32015"
       />
       <FolkFlower
         className="absolute bottom-6 right-6 w-16 sm:w-24 opacity-70 rotate-180"
-        color="#B81E26"
+        color="#b32015"
       />
 
       <motion.div

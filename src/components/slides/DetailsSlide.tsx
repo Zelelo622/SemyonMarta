@@ -20,29 +20,29 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 function Chest({ className = '' }: { className?: string }) {
   return (
     <svg viewBox="0 0 120 100" className={className} xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <g stroke="#B81E26" strokeWidth="1.2" fill="#B81E26">
+      <g stroke="#b32015" strokeWidth="1.2" fill="#b32015">
         {/* верхняя крышка */}
         <path d="M10 40 C10 28 18 18 30 18 L90 18 C102 18 110 28 110 40 L110 50 L10 50 Z" />
         {/* основание */}
         <rect x="10" y="50" width="100" height="40" />
         {/* металлические полосы */}
-        <g stroke="#F5EBDC" strokeWidth="2" fill="none">
+        <g stroke="#fff8f0" strokeWidth="2" fill="none">
           <path d="M10 50 L110 50" />
           <path d="M60 18 L60 90" />
           <path d="M30 18 L30 90" />
           <path d="M90 18 L90 90" />
         </g>
         {/* замочек */}
-        <rect x="54" y="48" width="12" height="14" fill="#F5EBDC" stroke="#B81E26" />
-        <circle cx="60" cy="54" r="1.6" fill="#B81E26" stroke="none" />
+        <rect x="54" y="48" width="12" height="14" fill="#fff8f0" stroke="#b32015" />
+        <circle cx="60" cy="54" r="1.6" fill="#b32015" stroke="none" />
         {/* монеты, выглядывающие */}
-        <g fill="#F5EBDC" stroke="none">
+        <g fill="#fff8f0" stroke="none">
           <circle cx="40" cy="32" r="3" />
           <circle cx="48" cy="36" r="2.4" />
           <circle cx="76" cy="34" r="2.8" />
           <circle cx="84" cy="38" r="2.2" />
         </g>
-        <g stroke="#B81E26" strokeWidth="0.8" fill="none">
+        <g stroke="#b32015" strokeWidth="0.8" fill="none">
           <circle cx="40" cy="32" r="3" />
           <circle cx="48" cy="36" r="2.4" />
           <circle cx="76" cy="34" r="2.8" />
@@ -57,9 +57,9 @@ function Chest({ className = '' }: { className?: string }) {
 function LittleFlower({ className = '' }: { className?: string }) {
   return (
     <svg viewBox="0 0 80 80" className={className} xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <g fill="#B81E26" stroke="#B81E26" strokeWidth="1">
+      <g fill="#b32015" stroke="#b32015" strokeWidth="1">
         {/* стебель */}
-        <path d="M40 78 L40 50" stroke="#B81E26" strokeWidth="1.5" fill="none" />
+        <path d="M40 78 L40 50" stroke="#b32015" strokeWidth="1.5" fill="none" />
         {/* листок */}
         <path d="M40 62 C32 60 28 54 30 50 C36 50 42 56 40 62 Z" />
         {/* цветок — 5 лепестков */}
@@ -74,7 +74,7 @@ function LittleFlower({ className = '' }: { className?: string }) {
           />
         ))}
         {/* центр */}
-        <circle cx="40" cy="36" r="3.5" fill="#F5EBDC" stroke="#B81E26" />
+        <circle cx="40" cy="36" r="3.5" fill="#fff8f0" stroke="#b32015" />
       </g>
     </svg>
   )
@@ -84,9 +84,9 @@ function LittleFlower({ className = '' }: { className?: string }) {
 function ChatBubble({ className = '' }: { className?: string }) {
   return (
     <svg viewBox="0 0 100 90" className={className} xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <g stroke="#B81E26" strokeWidth="1.2" fill="#B81E26">
+      <g stroke="#b32015" strokeWidth="1.2" fill="#b32015">
         <path d="M10 20 C10 12 16 6 24 6 L76 6 C84 6 90 12 90 20 L90 50 C90 58 84 64 76 64 L40 64 L24 78 L24 64 C16 64 10 58 10 50 Z" />
-        <g fill="#F5EBDC" stroke="none">
+        <g fill="#fff8f0" stroke="none">
           <circle cx="32" cy="34" r="3" />
           <circle cx="50" cy="34" r="3" />
           <circle cx="68" cy="34" r="3" />

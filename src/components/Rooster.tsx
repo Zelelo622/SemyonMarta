@@ -6,7 +6,7 @@ interface Props {
 
 export default function Rooster({
   className = '',
-  color = '#B81E26',
+  color = '#b32015',
   flip = false,
 }: Props) {
   return (
@@ -27,15 +27,15 @@ export default function Rooster({
         />
         <path d="M38 30 C36 26 38 22 42 22 C40 18 44 16 46 20 C48 16 52 18 50 22 C54 22 56 26 54 30 Z" />
         <path d="M54 36 L60 36 L56 40 Z" />
-        <circle cx="50" cy="34" r="1" fill="#F5EBDC" stroke="none" />
+        <circle cx="50" cy="34" r="1" fill="#fff8f0" stroke="none" />
         <path
           fill="none"
           strokeLinecap="round"
           d="M38 58 L36 66 M36 66 L32 70 M36 66 L40 70 M36 66 L36 70 M46 58 L48 66 M48 66 L44 70 M48 66 L52 70 M48 66 L48 70"
         />
-        <circle cx="40" cy="42" r="1.2" fill="#F5EBDC" stroke="none" />
-        <circle cx="46" cy="46" r="1" fill="#F5EBDC" stroke="none" />
-        <circle cx="42" cy="50" r="0.8" fill="#F5EBDC" stroke="none" />
+        <circle cx="40" cy="42" r="1.2" fill="#fff8f0" stroke="none" />
+        <circle cx="46" cy="46" r="1" fill="#fff8f0" stroke="none" />
+        <circle cx="42" cy="50" r="0.8" fill="#fff8f0" stroke="none" />
       </g>
     </svg>
   )

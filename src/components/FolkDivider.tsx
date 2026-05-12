@@ -5,7 +5,7 @@ interface Props {
 
 export default function FolkDivider({
   className = '',
-  color = '#B81E26',
+  color = '#b32015',
 }: Props) {
   return (
     <svg
