@@ -21,20 +21,28 @@ export function useSlideTracking(
           const next = new Set(prev)
           let changed = false
           for (const entry of entries) {
+            if (!entry.isIntersecting) continue
             const idx = Number(
               (entry.target as HTMLElement).dataset.slideIndex,
             )
-            if (entry.isIntersecting && !next.has(idx)) {
-              next.add(idx)
-              changed = true
+            // Mark all slides up to this index as visible — handles fast-scroll
+            // where intermediate slides are never observed at threshold
+            for (let i = 0; i <= idx; i++) {
+              if (!next.has(i)) {
+                next.add(i)
+                changed = true
+              }
             }
           }
           return changed ? next : prev
         })
       },
       {
-        rootMargin: '0px 0px -10% 0px',
-        threshold: 0.15,
+        // Fire as soon as any pixel of the slide is in the extended viewport.
+        // Positive bottom margin pre-triggers the animation before the slide
+        // fully enters view, so fast-fling users see content already rendered.
+        rootMargin: '0px 0px 150px 0px',
+        threshold: 0,
       },
     )
 

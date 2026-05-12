@@ -16,11 +16,11 @@ export const WEDDING = {
     yandexMapsUrl:
       'https://yandex.ru/maps/org/usadba_12_24/34756992807?si=ny4mzx6mt3j0w4wzrecfhc5tzr',
     images: [
-      'https://lh3.googleusercontent.com/p/AF1QipPxUVzVmimQIw_tD17vr2qCiSbPlpvMc1w_gebL=s680-w680-h510-rw',
-      'https://lh3.googleusercontent.com/gps-cs-s/APNQkAHg78QF0iNh3VLKJAhWq1VMOukE_rH7npWVc443b_DxPJ5aWF8qbEVu_Mc4JLBDv26A68994dL_ZoFiRy4-sCy8XQ_Ewe_VWUOAIOK3OyKkgbL7U0K7aFyuufflvrN_ZJUVslNixmK3dYEy=s680-w680-h510-rw',
-      'https://lh3.googleusercontent.com/p/AF1QipMZ4XKd2Gwe_6Au5SBJcO_ZTs-TEdKGBWu3BnIP=s680-w680-h510-rw',
-      'https://lh3.googleusercontent.com/p/AF1QipO1Qk7DtWVUfRa1pc4356k1c_3hW_OUoUTzg3RV=s680-w680-h510-rw',
-      'https://lh3.googleusercontent.com/p/AF1QipNQmT-rFUZ2_M1xpdFKz3M2EqyUrauvbwSTyDvo=s680-w680-h510-rw',
+      'https://avatars.mds.yandex.net/get-altay/19871159/2a0000019d73e6e0deea932e4aca033c1dee/XXXL',
+      'https://avatars.mds.yandex.net/get-altay/13951679/2a0000019538a5ea360a804822e96d3d7f47/XXXL',
+      'https://avatars.mds.yandex.net/get-altay/14782168/2a0000019a6894d750d2f6d10f3610cb3435/XXXL',
+      'https://avatars.mds.yandex.net/get-altay/14664328/2a000001953b86d9a11bd173d98ef0b57156/XXXL',
+      'https://avatars.mds.yandex.net/get-altay/13851722/2a0000019538a4b65b483e238867478c4043/XXXL',
     ],
   } as const,
 

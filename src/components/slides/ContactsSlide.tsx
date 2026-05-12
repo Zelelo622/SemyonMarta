@@ -112,7 +112,7 @@ export default function ContactsSlide({ visible }: SlideProps) {
           {WEDDING.groomName} и {WEDDING.brideName}
         </p>
 
-        <p className="chapter-mark mt-8 opacity-70">
+        <p className="chapter-mark mt-8 mb-6 opacity-70">
           {WEDDING.dateText} · {WEDDING.dayOfWeek}
         </p>
       </motion.div>

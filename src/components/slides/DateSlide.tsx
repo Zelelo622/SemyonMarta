@@ -32,7 +32,7 @@ function Calendar() {
         {JULY_2026.weekDays.map((d, i) => (
           <div
             key={d}
-            className={`text-center font-bukva text-[10px] tracking-widest3 ${
+            className={`text-center font-bukva text-[16px] tracking-widest3 ${
               i >= 5 ? 'text-rose' : 'text-ink-muted'
             }`}
           >
@@ -96,7 +96,7 @@ function CountdownBlock() {
           >
             {String(item.v).padStart(2, '0')}
           </span>
-          <span className="mt-1 font-bukva uppercase text-[9px] sm:text-[10px] tracking-widest3 text-ink-muted">
+          <span className="mt-1 font-bukva uppercase text-[16px] sm:text-[18px] tracking-widest3 text-ink-muted">
             {item.l}
           </span>
         </div>

@@ -176,7 +176,7 @@ export default function CoverSlide({ playing, volume, onMusicToggle, onVolumeCha
                 className="w-28 sm:w-36 accent-rose cursor-pointer"
                 aria-label="Громкость"
               />
-              <span className="font-bukva uppercase text-[10px] tracking-widest text-rose/60 w-7 text-right tabular-nums">
+              <span className="font-bukva uppercase text-[16px] tracking-widest text-rose/60 w-7 text-right tabular-nums">
                 {Math.round(volume * 100)}%
               </span>
             </motion.div>
@@ -200,7 +200,7 @@ export default function CoverSlide({ playing, volume, onMusicToggle, onVolumeCha
           transition={{ delay: 2, duration: 1 }}
           className="mt-8 flex flex-col items-center gap-2"
         >
-          <span className="font-bukva uppercase text-[10px] tracking-widest3 text-ink-muted">
+          <span className="font-bukva uppercase text-[16px] tracking-widest3 text-ink-muted">
             Листайте далее
           </span>
           <motion.svg

@@ -2,6 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'AncientKyiv';
+  src: url('./fonts/Ancient Kyiv.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cyrillic Old';
+  src: url('./fonts/ofont.ru_Cyrillic Old.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Monomakh Unicode';
+  src: url('./fonts/ofont.ru_Monomakh Unicode.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
   :root {
     color-scheme: light;
@@ -24,7 +48,7 @@
   }
 
   body {
-    font-family: 'PT Serif', Georgia, serif;
+    font-family: 'Monomakh Unicode', Georgia, serif;
     font-size: 16px;
     line-height: 1.65;
     overscroll-behavior: none;
@@ -56,7 +80,7 @@
   }
 
   h1, h2, h3, h4 {
-    font-family: 'IM Fell Double Pica SC', 'PT Serif', serif;
+    font-family: 'AncientKyiv', serif;
     color: var(--red);
     font-weight: 400;
     letter-spacing: 0.02em;
@@ -95,21 +119,21 @@
 
   .chapter-mark {
     @apply font-bukva text-rose uppercase
-           text-[11px] sm:text-[12px] tracking-widest3;
+           text-[20px] sm:text-[24px] tracking-widest3;
   }
 
   .chapter-title {
-    font-family: 'IM Fell Double Pica SC', serif;
+    font-family: 'AncientKyiv', serif;
     @apply text-rose text-3xl sm:text-5xl leading-[1.05];
   }
 
   .body-slav {
-    @apply font-slav text-ink/85 text-[15px] sm:text-[17px] leading-relaxed;
+    @apply font-slav text-ink/85 text-[16px] sm:text-[20px] leading-relaxed;
   }
 
   .bukva-drop {
     float: left;
-    font-family: 'IM Fell Double Pica SC', 'Lobster', serif;
+    font-family: 'AncientKyiv', serif;
     color: var(--red);
     font-size: 4.5em;
     line-height: 0.82;
@@ -135,7 +159,7 @@
 
   .btn-filled {
     @apply inline-flex items-center justify-center
-           px-6 py-3 font-bukva uppercase
+           px-6 py-3 font-slav uppercase
            text-[13px] tracking-widest3
            bg-rose text-ivory
            border border-rose
@@ -159,7 +183,7 @@
 
   .btn-outline {
     @apply inline-flex items-center justify-center
-           px-5 py-2.5 font-bukva uppercase
+           px-5 py-2.5 font-slav uppercase
            text-[12px] tracking-widest3
            bg-transparent text-rose
            border border-rose
@@ -170,7 +194,7 @@
   }
 
   .field-label {
-    @apply block mb-2 font-bukva uppercase text-[10px] sm:text-[11px]
+    @apply block mb-2 font-slav uppercase text-[16px] sm:text-[18px]
            tracking-widest3 text-ink-muted;
   }
 
@@ -218,12 +242,12 @@
   }
 
   .label-tiny {
-    @apply font-bukva uppercase text-[10px] sm:text-[11px]
+    @apply font-bukva uppercase text-[16px] sm:text-[18px]
            tracking-widest3 text-rose;
   }
 
   .heading {
-    font-family: 'IM Fell Double Pica SC', serif;
+    font-family: 'AncientKyiv', serif;
     @apply text-rose text-3xl sm:text-4xl leading-tight;
   }
 

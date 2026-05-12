@@ -83,7 +83,7 @@ function GuestRow({
       className="folk-card p-4 sm:p-5"
     >
       <div className="flex justify-between items-center mb-3.5">
-        <span className="font-bukva uppercase text-rose text-[10px] tracking-widest3">
+        <span className="font-slav uppercase text-rose text-[16px] tracking-widest3">
           Гость {index + 1}
         </span>
         {canRemove && (
@@ -496,7 +496,7 @@ export default function RSVPSlide({ visible }: SlideProps) {
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.98 }}
                   className="py-3 border border-dashed border-rose/40
-                             font-bukva uppercase text-[12px] tracking-widest3 text-ink-muted
+                             font-slav uppercase text-[12px] tracking-widest3 text-ink-muted
                              hover:border-rose hover:text-rose transition-colors"
                 >
                   + Добавить ещё гостя

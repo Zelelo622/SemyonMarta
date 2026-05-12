@@ -14,10 +14,10 @@ export default {
         'ink-muted': '#5C4A3E',
       },
       fontFamily: {
-        bukva: ['"IM Fell Double Pica SC"', '"Lobster"', 'serif'],
-        slav: ['"PT Serif"', 'Georgia', 'serif'],
-        marck: ['"Marck Script"', '"Caveat"', 'cursive'],
-        mono: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        bukva: ['"AncientKyiv"', 'serif'],
+        slav: ['"Monomakh Unicode"', 'Georgia', 'serif'],
+        marck: ['"Cyrillic Old"', 'serif'],
+        mono: ['"Monomakh Unicode"', 'Georgia', 'serif'],
       },
       letterSpacing: {
         widest3: '0.25em',
