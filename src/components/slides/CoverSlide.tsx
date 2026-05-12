@@ -87,7 +87,7 @@ export default function CoverSlide({ playing, loading, volume, onMusicToggle, on
           className="font-bukva text-rose leading-[0.95] text-balance"
           style={{ fontSize: 'clamp(3.5rem, 14vw, 7rem)' }}
         >
-          Жили-<br className="sm:hidden" />были
+          Жили-были
         </motion.h1>
 
         <FolkDivider className="max-w-[300px] w-full mx-auto my-6 sm:my-7" />
