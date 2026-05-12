@@ -29,15 +29,15 @@ export default function App() {
 
   return (
     <>
-      <MusicToggle
+      {/* <MusicToggle
         playing={playing}
         volume={volume}
         onToggle={toggle}
         onVolumeChange={setVolume}
-      />
+      /> */}
 
       <main ref={containerRef} className="relative">
-        <CoverSlide playing={playing} onMusicToggle={toggle} />
+        <CoverSlide playing={playing} volume={volume} onMusicToggle={toggle} onVolumeChange={setVolume} />
         <DateSlide visible={visible.has(1)} />
         <VenueSlide visible={visible.has(2)} />
         <ProgramSlide visible={visible.has(3)} />
