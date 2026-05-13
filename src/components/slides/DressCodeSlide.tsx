@@ -127,7 +127,7 @@ function Lapti({ className = '' }: { className?: string }) {
 
 export default function DressCodeSlide({ visible }: SlideProps) {
   return (
-    <section data-slide-index="4" className="slide-base above-paper bg-cream">
+    <section data-slide-index="4" className="slide-base above-paper slide-base-4">
       <FolkFlower
         className="absolute top-8 right-8 w-20 sm:w-28 opacity-40"
         color="#b32015"
@@ -144,7 +144,7 @@ export default function DressCodeSlide({ visible }: SlideProps) {
         className="scroll-col"
       >
         <ChapterHeader
-          chapter="Глава 4."
+          chapter="Глава 4"
           title="Одеяния"
           className="mb-12"
         />

@@ -8,7 +8,7 @@ export default function VenueSlide({ visible }: SlideProps) {
   return (
     <section
       data-slide-index="2"
-      className="slide-base above-paper bg-cream"
+      className="slide-base above-paper slide-base-2"
     >
       <FolkFlower
         className="absolute -top-4 -left-4 w-24 sm:w-32 opacity-50"
@@ -26,7 +26,7 @@ export default function VenueSlide({ visible }: SlideProps) {
         className="scroll-col"
       >
         <ChapterHeader
-          chapter="Глава 2."
+          chapter="Глава 2"
           title="Места действа"
           className="mb-10"
         />
@@ -40,7 +40,6 @@ export default function VenueSlide({ visible }: SlideProps) {
 
         {/* Большое название места — картуш */}
         <div className="cartouche px-6 py-8 sm:px-10 sm:py-10 text-center mb-8">
-          <p className="chapter-mark mb-3">Усадьба дивная</p>
           <h3
             className="font-bukva text-rose leading-none"
             style={{ fontSize: 'clamp(2.5rem, 9vw, 4rem)' }}
@@ -53,7 +52,7 @@ export default function VenueSlide({ visible }: SlideProps) {
         </div>
 
         {/* Картинки места */}
-        <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-8">
+        {/* <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-8">
           {WEDDING.venue.images.slice(0, 4).map((src, i) => (
             <motion.div
               key={i}
@@ -82,7 +81,7 @@ export default function VenueSlide({ visible }: SlideProps) {
               />
             </motion.div>
           ))}
-        </div>
+        </div> */}
 
         <div className="text-center">
           <a

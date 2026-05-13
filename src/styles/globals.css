@@ -112,12 +112,23 @@
     @apply relative w-full min-h-[100dvh] flex flex-col items-center justify-center
            px-5 sm:px-8 py-16 sm:py-20 overflow-hidden;
   }
+  .slide-base-2 {
+    @apply min-h-[80dvh]
+  }
+  .slide-base-4 {
+    @apply min-h-[80dvh]
+  }
 
   .scroll-col {
     @apply relative w-full max-w-[640px] mx-auto;
   }
 
   .chapter-mark {
+    @apply font-bukva text-rose uppercase
+           text-[34px] sm:text-[24px] tracking-widest3;
+  }
+
+  .chapter-mark-2 {
     @apply font-bukva text-rose uppercase
            text-[20px] sm:text-[24px] tracking-widest3;
   }

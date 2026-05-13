@@ -92,11 +92,11 @@ function CountdownBlock() {
         <div key={item.l} className="flex flex-col items-center">
           <span
             className="font-bukva text-rose leading-none tabular-nums"
-            style={{ fontSize: 'clamp(1.8rem, 7vw, 3rem)' }}
+            style={{ fontSize: 'clamp(2.2rem, 7vw, 4rem)' }}
           >
             {String(item.v).padStart(2, '0')}
           </span>
-          <span className="mt-1 font-bukva uppercase text-[16px] sm:text-[18px] tracking-widest3 text-ink-muted">
+          <span className="mt-1 font-bukva uppercase text-[20px] sm:text-[18px] tracking-widest3 text-ink-muted">
             {item.l}
           </span>
         </div>
@@ -107,7 +107,7 @@ function CountdownBlock() {
 
 export default function DateSlide({ visible }: SlideProps) {
   return (
-    <section data-slide-index="1" className="slide-base above-paper">
+    <section data-slide-index="1" className="slide-base above-paper bg-cream">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={visible ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
@@ -138,13 +138,13 @@ export default function DateSlide({ visible }: SlideProps) {
 
         <FolkDivider className="max-w-[280px] w-full mx-auto mb-10" />
 
-        <ChapterHeader chapter="Глава 1." title="Время" className="mb-8" />
+        <ChapterHeader chapter="Глава 1" title="Время" className="mb-8" />
 
         {/* Большая буквица + цитата */}
         <div className="mb-10 body-slav text-pretty">
           <span className="bukva-drop">Д</span>
-          олго ль, коротко ль, да назначен день — двадцать шестое июля
-          года 2026-го, в день воскресный, в час пополудни два с половиной.
+          олго ль, коротко ль, да назначен день — двадцать шестой июля
+          месяца года двадцать шестого двадцать первого столетия , в день воскресный, в час пополудни два с половиной.
           Усадьба дивная нас примет, гости званые соберутся, и быть тогда
           торжеству великому.
         </div>

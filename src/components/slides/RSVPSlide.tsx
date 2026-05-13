@@ -431,7 +431,7 @@ export default function RSVPSlide({ visible }: SlideProps) {
   return (
     <section
       data-slide-index="6"
-      className="slide-base above-paper bg-cream !justify-start"
+      className="slide-base above-paper !justify-start"
       style={{ paddingTop: '4rem', paddingBottom: '4rem' }}
     >
       <motion.div
@@ -440,7 +440,7 @@ export default function RSVPSlide({ visible }: SlideProps) {
         transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
         className="w-full max-w-[520px]"
       >
-        <ChapterHeader chapter="Глава 6." title="Анкета" className="mb-7" />
+        <ChapterHeader chapter="Глава 6" title="Анкета" className="mb-7" />
 
         <p className="body-slav text-center text-pretty mb-7 max-w-md mx-auto">
           Дорогие наши гости, просим заполнить анкету

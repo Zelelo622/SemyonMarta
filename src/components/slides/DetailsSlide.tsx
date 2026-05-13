@@ -102,7 +102,7 @@ export default function DetailsSlide({ visible }: SlideProps) {
   const tgClicheUrl = `${flowers.tgUrl}?text=${encodeURIComponent(flowers.cliche)}`
 
   return (
-    <section data-slide-index="5" className="slide-base above-paper">
+    <section data-slide-index="5" className="slide-base above-paper bg-cream">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={visible ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
@@ -110,7 +110,7 @@ export default function DetailsSlide({ visible }: SlideProps) {
         className="scroll-col"
       >
         <ChapterHeader
-          chapter="Глава 5."
+          chapter="Глава 5"
           title="Детали важные"
           className="mb-10"
         />

@@ -6,7 +6,7 @@ import type { SlideProps } from '@/types'
 
 export default function ProgramSlide({ visible }: SlideProps) {
   return (
-    <section data-slide-index="3" className="slide-base above-paper">
+    <section data-slide-index="3" className="slide-base above-paper bg-cream">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={visible ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
@@ -14,7 +14,7 @@ export default function ProgramSlide({ visible }: SlideProps) {
         className="scroll-col"
       >
         <ChapterHeader
-          chapter="Глава 3."
+          chapter="Глава 3"
           title="Как всё пройдёт"
           className="mb-12"
         />

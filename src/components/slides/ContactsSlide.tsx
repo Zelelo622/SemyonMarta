@@ -7,7 +7,7 @@ import type { SlideProps } from '@/types'
 
 export default function ContactsSlide({ visible }: SlideProps) {
   return (
-    <section data-slide-index="7" className="slide-base above-paper bg-ivory">
+    <section data-slide-index="7" className="slide-base above-paper bg-cream">
       <FolkFlower
         className="absolute top-6 left-6 w-16 sm:w-24 opacity-70"
         color="#b32015"
@@ -112,7 +112,7 @@ export default function ContactsSlide({ visible }: SlideProps) {
           {WEDDING.groomName} и {WEDDING.brideName}
         </p>
 
-        <p className="chapter-mark mt-8 mb-6 opacity-70">
+        <p className="chapter-mark-2 mt-8 mb-6 opacity-70">
           {WEDDING.dateText} · {WEDDING.dayOfWeek}
         </p>
       </motion.div>
