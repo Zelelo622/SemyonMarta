@@ -181,12 +181,12 @@
       0 8px 20px -10px rgba(154, 24, 32, 0.6);
   }
   .btn-filled:hover {
-    @apply bg-rose-deep;
+    @apply bg-ivory text-rose;
     transform: translateY(-1px);
     box-shadow:
       0 0 0 3px var(--paper),
-      0 0 0 4px var(--red-deep),
-      0 10px 24px -8px rgba(154, 24, 32, 0.7);
+      0 0 0 4px var(--red),
+      0 10px 24px -8px rgba(154, 24, 32, 0.35);
   }
   .btn-filled:disabled {
     @apply opacity-60 cursor-not-allowed;
@@ -194,14 +194,23 @@
 
   .btn-outline {
     @apply inline-flex items-center justify-center
-           px-5 py-2.5 font-slav uppercase
-           text-[12px] tracking-widest3
-           bg-transparent text-rose
+           px-6 py-3 font-slav uppercase
+           text-[13px] tracking-widest3
+           bg-ivory text-rose
            border border-rose
            transition-all duration-300 cursor-pointer;
+    box-shadow:
+      0 0 0 3px var(--paper),
+      0 0 0 4px var(--red),
+      0 8px 20px -10px rgba(154, 24, 32, 0.3);
   }
   .btn-outline:hover {
     @apply bg-rose text-ivory;
+    transform: translateY(-1px);
+    box-shadow:
+      0 0 0 3px var(--paper),
+      0 0 0 4px var(--red-deep),
+      0 10px 24px -8px rgba(154, 24, 32, 0.7);
   }
 
   .field-label {

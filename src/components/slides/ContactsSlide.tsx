@@ -31,7 +31,6 @@ export default function ContactsSlide({ visible }: SlideProps) {
         transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
         className="scroll-col text-center"
       >
-        <p className="chapter-mark mb-5">Заключение</p>
 
         {/* Большая буквица + фраза */}
         <h2

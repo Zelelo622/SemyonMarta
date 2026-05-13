@@ -1,54 +1,49 @@
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   useForm,
   useFieldArray,
   Controller,
   type SubmitHandler,
-} from 'react-hook-form'
-import { sendRSVP } from '@/lib/email'
-import { WEDDING } from '@/lib/constants'
-import ChapterHeader from '../ChapterHeader'
-import FolkDivider from '../FolkDivider'
-import type {
-  RSVPForm,
-  GuestForm,
-  SlideProps,
-  DrinkValue,
-} from '@/types'
+} from "react-hook-form";
+import { sendRSVP } from "@/lib/email";
+import { WEDDING } from "@/lib/constants";
+import ChapterHeader from "../ChapterHeader";
+import FolkDivider from "../FolkDivider";
+import type { RSVPForm, GuestForm, SlideProps, DrinkValue } from "@/types";
 
-const MAX_GUESTS = 8
+const MAX_GUESTS = 8;
 
 const DRINK_OPTIONS: { value: DrinkValue; label: string }[] = [
-  { value: 'wine', label: 'Вино' },
-  { value: 'vodka', label: 'Водка' },
-  { value: 'cognac', label: 'Коньяк' },
-  { value: 'whiskey', label: 'Виски' },
-  { value: 'didrovka', label: 'Дидровка' },
-  { value: 'nonalc', label: 'Без алкоголя' },
-]
+  { value: "wine", label: "Вино" },
+  { value: "vodka", label: "Водка" },
+  { value: "cognac", label: "Коньяк" },
+  { value: "whiskey", label: "Виски" },
+  { value: "didrovka", label: "Дидровка" },
+  { value: "nonalc", label: "Без алкоголя" },
+];
 
 const emptyGuest = (): GuestForm => ({
-  name: '',
-  guestType: 'adult',
-  attend: 'yes',
+  name: "",
+  guestType: "adult",
+  attend: "yes",
   drinks: [],
-  allergies: 'none',
-  allergyDetails: '',
-  accommodation: 'none',
-  transfer: 'none',
-  transferAddress: '',
-})
+  allergies: "none",
+  allergyDetails: "",
+  accommodation: "none",
+  transfer: "none",
+  transferAddress: "",
+});
 
 /* ── single guest sub-form ── */
 interface GuestRowProps {
-  index: number
-  control: ReturnType<typeof useForm<RSVPForm>>['control']
-  register: ReturnType<typeof useForm<RSVPForm>>['register']
-  watch: ReturnType<typeof useForm<RSVPForm>>['watch']
-  errors: ReturnType<typeof useForm<RSVPForm>>['formState']['errors']
-  onRemove: () => void
-  canRemove: boolean
+  index: number;
+  control: ReturnType<typeof useForm<RSVPForm>>["control"];
+  register: ReturnType<typeof useForm<RSVPForm>>["register"];
+  watch: ReturnType<typeof useForm<RSVPForm>>["watch"];
+  errors: ReturnType<typeof useForm<RSVPForm>>["formState"]["errors"];
+  onRemove: () => void;
+  canRemove: boolean;
 }
 
 function GuestRow({
@@ -60,18 +55,18 @@ function GuestRow({
   onRemove,
   canRemove,
 }: GuestRowProps) {
-  const guestType = watch(`guests.${index}.guestType`)
-  const attend = watch(`guests.${index}.attend`)
-  const allergies = watch(`guests.${index}.allergies`)
-  const transfer = watch(`guests.${index}.transfer`)
+  const guestType = watch(`guests.${index}.guestType`);
+  const attend = watch(`guests.${index}.attend`);
+  const allergies = watch(`guests.${index}.allergies`);
+  const transfer = watch(`guests.${index}.transfer`);
 
-  const isAdult = guestType === 'adult'
-  const attending = attend === 'yes'
+  const isAdult = guestType === "adult";
+  const attending = attend === "yes";
 
-  const nameErr = errors.guests?.[index]?.name
-  const drinksErr = errors.guests?.[index]?.drinks
-  const allergyDetailErr = errors.guests?.[index]?.allergyDetails
-  const transferAddrErr = errors.guests?.[index]?.transferAddress
+  const nameErr = errors.guests?.[index]?.name;
+  const drinksErr = errors.guests?.[index]?.drinks;
+  const allergyDetailErr = errors.guests?.[index]?.allergyDetails;
+  const transferAddrErr = errors.guests?.[index]?.transferAddress;
 
   return (
     <motion.div
@@ -110,15 +105,15 @@ function GuestRow({
               <label className="field-label">Тип гостя</label>
               <div className="flex gap-2.5">
                 {[
-                  { v: 'adult' as const, l: 'Взрослый' },
-                  { v: 'child' as const, l: 'Ребёнок' },
+                  { v: "adult" as const, l: "Взрослый" },
+                  { v: "child" as const, l: "Ребёнок" },
                 ].map((opt) => (
                   <button
                     type="button"
                     key={opt.v}
                     onClick={() => field.onChange(opt.v)}
                     className={`toggle-btn ${
-                      field.value === opt.v ? 'active' : ''
+                      field.value === opt.v ? "active" : ""
                     }`}
                   >
                     {opt.l}
@@ -134,10 +129,10 @@ function GuestRow({
           <label className="field-label">Имя и Фамилия</label>
           <input
             {...register(`guests.${index}.name`, {
-              required: 'Пожалуйста, укажите имя',
-              minLength: { value: 2, message: 'Пожалуйста, укажите имя' },
+              required: "Пожалуйста, укажите имя",
+              minLength: { value: 2, message: "Пожалуйста, укажите имя" },
             })}
-            className={`field-input ${nameErr ? 'border-rose' : ''}`}
+            className={`field-input ${nameErr ? "border-rose" : ""}`}
             placeholder="Иван Иванов"
             autoComplete="off"
           />
@@ -159,15 +154,15 @@ function GuestRow({
               </label>
               <div className="flex gap-2.5">
                 {[
-                  { v: 'yes' as const, l: '✓ С радостью!' },
-                  { v: 'no' as const, l: '✗ Не смогу' },
+                  { v: "yes" as const, l: "✓ С радостью!" },
+                  { v: "no" as const, l: "✗ Не смогу" },
                 ].map((opt) => (
                   <button
                     type="button"
                     key={opt.v}
                     onClick={() => field.onChange(opt.v)}
                     className={`toggle-btn ${
-                      field.value === opt.v ? 'active' : ''
+                      field.value === opt.v ? "active" : ""
                     }`}
                   >
                     {opt.l}
@@ -183,7 +178,7 @@ function GuestRow({
             <motion.div
               key="attending-fields"
               initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
+              animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
               className="overflow-hidden flex flex-col gap-3.5"
@@ -195,7 +190,7 @@ function GuestRow({
                   name={`guests.${index}.drinks`}
                   rules={{
                     validate: (v) =>
-                      v.length > 0 || 'Выберите хотя бы один напиток',
+                      v.length > 0 || "Выберите хотя бы один напиток",
                   }}
                   render={({ field }) => (
                     <div>
@@ -204,7 +199,7 @@ function GuestRow({
                       </label>
                       <div className="flex gap-2 flex-wrap">
                         {DRINK_OPTIONS.map((opt) => {
-                          const active = field.value.includes(opt.value)
+                          const active = field.value.includes(opt.value);
                           return (
                             <button
                               type="button"
@@ -212,14 +207,14 @@ function GuestRow({
                               onClick={() => {
                                 const next = active
                                   ? field.value.filter((v) => v !== opt.value)
-                                  : [...field.value, opt.value]
-                                field.onChange(next)
+                                  : [...field.value, opt.value];
+                                field.onChange(next);
                               }}
-                              className={`chip-btn ${active ? 'active' : ''}`}
+                              className={`chip-btn ${active ? "active" : ""}`}
                             >
                               {opt.label}
                             </button>
-                          )
+                          );
                         })}
                       </div>
                       {drinksErr && (
@@ -243,15 +238,15 @@ function GuestRow({
                     </label>
                     <div className="flex gap-2.5">
                       {[
-                        { v: 'none' as const, l: 'Нет' },
-                        { v: 'yes' as const, l: 'Да, есть' },
+                        { v: "none" as const, l: "Нет" },
+                        { v: "yes" as const, l: "Да, есть" },
                       ].map((opt) => (
                         <button
                           type="button"
                           key={opt.v}
                           onClick={() => field.onChange(opt.v)}
                           className={`toggle-btn ${
-                            field.value === opt.v ? 'active' : ''
+                            field.value === opt.v ? "active" : ""
                           }`}
                         >
                           {opt.l}
@@ -263,11 +258,11 @@ function GuestRow({
               />
 
               <AnimatePresence initial={false}>
-                {allergies === 'yes' && (
+                {allergies === "yes" && (
                   <motion.div
                     key="allergy-details"
                     initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
+                    animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
                     transition={{ duration: 0.25 }}
                     className="overflow-hidden"
@@ -276,10 +271,10 @@ function GuestRow({
                       {...register(`guests.${index}.allergyDetails`, {
                         validate: (v) =>
                           (v && v.trim().length > 0) ||
-                          'Укажите аллергии или ограничения',
+                          "Укажите аллергии или ограничения",
                       })}
                       className={`field-input ${
-                        allergyDetailErr ? 'border-rose' : ''
+                        allergyDetailErr ? "border-rose" : ""
                       }`}
                       placeholder="Укажите аллергии или ограничения"
                     />
@@ -304,15 +299,15 @@ function GuestRow({
                       </label>
                       <div className="flex gap-2.5">
                         {[
-                          { v: 'none' as const, l: 'Нет' },
-                          { v: 'yes' as const, l: 'Да' },
+                          { v: "none" as const, l: "Нет" },
+                          { v: "yes" as const, l: "Да" },
                         ].map((opt) => (
                           <button
                             type="button"
                             key={opt.v}
                             onClick={() => field.onChange(opt.v)}
                             className={`toggle-btn ${
-                              field.value === opt.v ? 'active' : ''
+                              field.value === opt.v ? "active" : ""
                             }`}
                           >
                             {opt.l}
@@ -333,19 +328,20 @@ function GuestRow({
                     render={({ field }) => (
                       <div>
                         <label className="field-label">
-                          Необходим ли вам трансфер после завершения мероприятия?
+                          Необходим ли вам трансфер после завершения
+                          мероприятия?
                         </label>
                         <div className="flex gap-2.5">
                           {[
-                            { v: 'none' as const, l: 'Нет' },
-                            { v: 'yes' as const, l: 'Да' },
+                            { v: "none" as const, l: "Нет" },
+                            { v: "yes" as const, l: "Да" },
                           ].map((opt) => (
                             <button
                               type="button"
                               key={opt.v}
                               onClick={() => field.onChange(opt.v)}
                               className={`toggle-btn ${
-                                field.value === opt.v ? 'active' : ''
+                                field.value === opt.v ? "active" : ""
                               }`}
                             >
                               {opt.l}
@@ -357,11 +353,11 @@ function GuestRow({
                   />
 
                   <AnimatePresence initial={false}>
-                    {transfer === 'yes' && (
+                    {transfer === "yes" && (
                       <motion.div
                         key="transfer-address"
                         initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
+                        animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
                         transition={{ duration: 0.25 }}
                         className="overflow-hidden"
@@ -370,10 +366,10 @@ function GuestRow({
                           {...register(`guests.${index}.transferAddress`, {
                             validate: (v) =>
                               (v && v.trim().length > 0) ||
-                              'Укажите адрес для трансфера',
+                              "Укажите адрес для трансфера",
                           })}
                           className={`field-input ${
-                            transferAddrErr ? 'border-rose' : ''
+                            transferAddrErr ? "border-rose" : ""
                           }`}
                           placeholder="Укажите адрес назначения"
                         />
@@ -392,14 +388,14 @@ function GuestRow({
         </AnimatePresence>
       </div>
     </motion.div>
-  )
+  );
 }
 
 /* ── main slide ── */
 export default function RSVPSlide({ visible }: SlideProps) {
   const [submitState, setSubmitState] = useState<
-    'idle' | 'sending' | 'success' | 'error'
-  >('idle')
+    "idle" | "sending" | "success" | "error"
+  >("idle");
 
   const {
     control,
@@ -409,30 +405,30 @@ export default function RSVPSlide({ visible }: SlideProps) {
     formState: { errors },
   } = useForm<RSVPForm>({
     defaultValues: { guests: [emptyGuest()] },
-    mode: 'onSubmit',
-  })
+    mode: "onSubmit",
+  });
 
   const { fields, append, remove } = useFieldArray({
     control,
-    name: 'guests',
-  })
+    name: "guests",
+  });
 
   const onSubmit: SubmitHandler<RSVPForm> = async (data) => {
-    setSubmitState('sending')
+    setSubmitState("sending");
     try {
-      await sendRSVP(data.guests)
-      setSubmitState('success')
+      await sendRSVP(data.guests);
+      setSubmitState("success");
     } catch (err) {
-      console.error('RSVP send error:', err)
-      setSubmitState('error')
+      console.error("RSVP send error:", err);
+      setSubmitState("error");
     }
-  }
+  };
 
   return (
     <section
       data-slide-index="6"
       className="slide-base above-paper !justify-start"
-      style={{ paddingTop: '4rem', paddingBottom: '4rem' }}
+      style={{ paddingTop: "4rem", paddingBottom: "4rem" }}
     >
       <motion.div
         initial={{ opacity: 0, y: 40 }}
@@ -443,15 +439,14 @@ export default function RSVPSlide({ visible }: SlideProps) {
         <ChapterHeader chapter="Глава 6" title="Анкета" className="mb-7" />
 
         <p className="body-slav text-center text-pretty mb-7 max-w-md mx-auto">
-          Дорогие наши гости, просим заполнить анкету
-          до <span className="text-rose font-bold">{WEDDING.rsvpDeadline}</span>,
-          чтобы мы смогли подготовиться к нашему мероприятию.
+          Дорогие наши гости, просим заполнить анкету после прочтения
+          приглашения, чтобы мы смогли лучше подготовиться к нашему мероприятию.
         </p>
 
         <FolkDivider className="max-w-[220px] w-full mx-auto mb-6 opacity-80" />
 
         <AnimatePresence mode="wait">
-          {submitState === 'success' ? (
+          {submitState === "success" ? (
             <motion.div
               key="success"
               initial={{ opacity: 0, scale: 0.95 }}
@@ -503,7 +498,7 @@ export default function RSVPSlide({ visible }: SlideProps) {
                 </motion.button>
               )}
 
-              {submitState === 'error' && (
+              {submitState === "error" && (
                 <p className="text-rose text-sm font-slav text-center">
                   Не удалось отправить. Попробуйте ещё раз.
                 </p>
@@ -511,19 +506,19 @@ export default function RSVPSlide({ visible }: SlideProps) {
 
               <motion.button
                 type="submit"
-                disabled={submitState === 'sending'}
-                whileHover={{ scale: submitState === 'sending' ? 1 : 1.01 }}
-                whileTap={{ scale: submitState === 'sending' ? 1 : 0.98 }}
+                disabled={submitState === "sending"}
+                whileHover={{ scale: submitState === "sending" ? 1 : 1.01 }}
+                whileTap={{ scale: submitState === "sending" ? 1 : 0.98 }}
                 className="btn-filled w-full mt-2"
               >
-                {submitState === 'sending'
-                  ? 'Отправляем...'
-                  : 'Отправить ответ'}
+                {submitState === "sending"
+                  ? "Отправляем..."
+                  : "Отправить ответ"}
               </motion.button>
             </motion.form>
           )}
         </AnimatePresence>
       </motion.div>
     </section>
-  )
+  );
 }
