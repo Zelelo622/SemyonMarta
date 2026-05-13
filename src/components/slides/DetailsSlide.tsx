@@ -1,17 +1,15 @@
 import { motion } from 'framer-motion'
 import { WEDDING } from '@/lib/constants'
 import ChapterHeader from '../ChapterHeader'
-import FolkDivider from '../FolkDivider'
 import type { SlideProps } from '@/types'
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
     <div className="text-center mt-12 mb-6">
-      <h3 className="font-bukva text-rose"
+      <h3 className="font-bukva text-ink"
           style={{ fontSize: 'clamp(1.7rem, 6vw, 2.3rem)' }}>
         {children}
       </h3>
-      <FolkDivider className="max-w-[180px] w-full mx-auto mt-3 opacity-80" />
     </div>
   )
 }
@@ -146,12 +144,12 @@ export default function DetailsSlide({ visible }: SlideProps) {
           Пишите им: «{flowers.cliche}»
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+        <div className="flex flex-col sm:flex-row gap-3 justify-center items-stretch max-w-sm mx-auto w-full">
           <a
             href={tgClicheUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-filled"
+            className="btn-filled flex-1 text-center"
           >
             ✦  Написать в ТГ
           </a>
@@ -159,7 +157,7 @@ export default function DetailsSlide({ visible }: SlideProps) {
             href={flowers.maxUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-outline"
+            className="btn-outline flex-1 text-center"
           >
             ✦  Написать в МАКС
           </a>
@@ -176,12 +174,12 @@ export default function DetailsSlide({ visible }: SlideProps) {
           Для тёплого общения и ярких кадров — присоединяйтесь к&nbsp;нашей беседе.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+        <div className="flex flex-col sm:flex-row gap-3 justify-center items-stretch max-w-sm mx-auto w-full">
           <a
             href={chat.tgUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-filled"
+            className="btn-filled flex-1 text-center"
           >
             ✦  Вступить в ТГ
           </a>
@@ -189,7 +187,7 @@ export default function DetailsSlide({ visible }: SlideProps) {
             href={chat.maxUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-outline"
+            className="btn-outline flex-1 text-center"
           >
             ✦  Вступить в МАКС
           </a>
