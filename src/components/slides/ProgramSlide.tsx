@@ -58,10 +58,10 @@ export default function ProgramSlide({ visible }: SlideProps) {
 
                 {/* правая колонка — название и описание */}
                 <div className="pl-4 sm:pl-6">
-                  <p className="font-bukva text-rose uppercase tracking-widest3 text-sm sm:text-base">
+                  <p className="font-bukva text-rose uppercase tracking-widest3 text-2xl sm:text-3xl">
                     {item.title}
                   </p>
-                  <p className="body-slav text-ink-muted text-sm mt-1">
+                  <p className="body-slav text-ink-muted text-xl mt-1">
                     {item.desc}
                   </p>
                 </div>

@@ -69,7 +69,7 @@ export default function ContactsSlide({ visible }: SlideProps) {
             >
               {WEDDING.contacts.groom.name}
             </p>
-            <p className="font-slav text-ink text-[15px] tracking-wider group-hover:text-rose transition-colors">
+            <p className="font-slav text-ink text-[18px] tracking-wider group-hover:text-rose transition-colors">
               {WEDDING.contacts.groom.phone}
             </p>
           </motion.a>
@@ -89,7 +89,7 @@ export default function ContactsSlide({ visible }: SlideProps) {
             >
               {WEDDING.contacts.bride.name}
             </p>
-            <p className="font-slav text-ink text-[15px] tracking-wider group-hover:text-rose transition-colors">
+            <p className="font-slav text-ink text-[18px] tracking-wider group-hover:text-rose transition-colors">
               {WEDDING.contacts.bride.phone}
             </p>
           </motion.a>

@@ -139,7 +139,7 @@
   }
 
   .body-slav {
-    @apply font-slav text-ink/85 text-[16px] sm:text-[20px] leading-relaxed;
+    @apply font-slav text-ink/85 text-[18px] sm:text-[22px] leading-relaxed;
   }
 
   .bukva-drop {
