@@ -1,5 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
-import { Howl } from 'howler'
+import { Howl, Howler } from 'howler'
+
+// iOS Safari cannot reliably play via Web Audio API: AudioContext starts suspended
+// and cannot be preloaded before a user gesture. html5 mode uses <audio> which iOS handles correctly.
+const isIOS =
+  typeof navigator !== 'undefined' &&
+  (/iPad|iPhone|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1))
 
 interface Options {
   src: string
@@ -20,13 +27,13 @@ export function useBackgroundMusic({
   const [volume, setVolumeState] = useState(initialVolume)
 
   useEffect(() => {
-    // Web Audio API (default, no html5: true) uses a GainNode for volume —
-    // the only way to control volume programmatically on iOS Safari.
-    // html5: true forces <audio> whose .volume property is read-only on iOS.
     const sound = new Howl({
       src: [src],
       loop,
       volume: initialVolume,
+      // On iOS use html5 audio (<audio> element) — Web Audio API is blocked until
+      // AudioContext is resumed, which is unreliable during preload on iOS Safari.
+      html5: isIOS,
       preload: true,
       onload: () => setLoading(false),
       onplay: () => { setPlaying(true); setLoading(false) },
@@ -35,9 +42,7 @@ export function useBackgroundMusic({
       onend: () => {
         if (!loop) setPlaying(false)
       },
-      onloaderror: () => {
-        setLoading(false)
-      },
+      onloaderror: () => setLoading(false),
       onplayerror: () => {
         setPlaying(false)
         setLoading(false)
@@ -54,14 +59,18 @@ export function useBackgroundMusic({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [src])
 
-  const toggle = () => {
+  const toggle = async () => {
     const h = howlRef.current
     if (!h) return
     if (h.playing()) {
       h.pause()
     } else {
-      // If still buffering, show loading state
-      if (h.state() !== 'loaded') setLoading(true)
+      setLoading(true)
+      // For Web Audio API (non-iOS): AudioContext must be explicitly resumed inside
+      // a user gesture handler, otherwise play() silently stalls in Safari/Chrome.
+      if (!isIOS && Howler.ctx && Howler.ctx.state !== 'running') {
+        try { await Howler.ctx.resume() } catch { /* ignore */ }
+      }
       h.play()
     }
   }
