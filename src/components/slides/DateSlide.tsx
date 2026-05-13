@@ -106,6 +106,8 @@ function CountdownBlock() {
 }
 
 export default function DateSlide({ visible }: SlideProps) {
+  const guestName = new URLSearchParams(window.location.search).get('name')
+
   return (
     <section data-slide-index="1" className="slide-base above-paper bg-cream">
       <motion.div
@@ -126,7 +128,7 @@ export default function DateSlide({ visible }: SlideProps) {
         <div className="mb-10 sm:mb-12">
           <p className="font-marck text-rose text-center mb-4"
              style={{ fontSize: 'clamp(2rem, 7vw, 3rem)' }}>
-            Дорогие наши гости!
+            Дорогие наши {guestName ?? 'гости'}!
           </p>
           <p className="body-slav text-center max-w-lg mx-auto">
             Приглашаем вас на пир,
