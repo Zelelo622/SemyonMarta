@@ -106,7 +106,10 @@ function CountdownBlock() {
 }
 
 export default function DateSlide({ visible }: SlideProps) {
-  const guestName = new URLSearchParams(window.location.search).get('name')
+  const _rawName = new URLSearchParams(window.location.search).get('name')
+  const guestName = _rawName
+    ? (() => { try { return decodeURIComponent(_rawName) } catch { return _rawName } })()
+    : null
 
   return (
     <section data-slide-index="1" className="slide-base above-paper bg-cream">
