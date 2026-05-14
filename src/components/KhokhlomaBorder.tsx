@@ -16,7 +16,7 @@ export default function KhokhlomaBorder({ className = '' }: Props) {
       aria-hidden="true"
     >
       {/* Lacquered background */}
-      <rect width="640" height="80" fill={D} />
+      <rect width="640" height="80" fill="#EFE3CE" />
 
       {/* Gold border strips */}
       <rect y="0" width="640" height="5" fill={G} />
