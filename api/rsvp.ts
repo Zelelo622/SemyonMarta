@@ -1,33 +1,34 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
+import nodemailer from 'nodemailer'
 
-const TARGET_EMAIL = 'svd36@inbox.ru'
+const transporter = nodemailer.createTransport({
+  host: 'smtp.mail.ru',
+  port: 465,
+  secure: true,
+  auth: {
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS,
+  },
+})
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
-  try {
-    const origin = req.headers.origin ?? 'https://semyon-marta.vercel.app'
+  const { _subject, message } = req.body as { _subject: string; message: string }
 
-    const upstream = await fetch(`https://formsubmit.co/ajax/${TARGET_EMAIL}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-        Origin: origin,
-        Referer: origin + '/',
-        'User-Agent': 'Mozilla/5.0 (compatible; wedding-rsvp/1.0)',
-      },
-      body: JSON.stringify(req.body),
+  try {
+    await transporter.sendMail({
+      from: process.env.SMTP_USER,
+      to: process.env.SMTP_USER,
+      subject: _subject ?? 'RSVP — свадьба',
+      text: message,
     })
 
-    const text = await upstream.text()
-    console.log(`formsubmit status=${upstream.status} body=${text}`)
-    const data = (() => { try { return JSON.parse(text) } catch { return { raw: text } } })()
-    return res.status(upstream.status).json(data)
+    return res.status(200).json({ success: true })
   } catch (err) {
-    console.error('RSVP proxy error:', err)
-    return res.status(500).json({ error: 'Internal server error' })
+    console.error('SMTP error:', err)
+    return res.status(500).json({ error: 'Failed to send email' })
   }
 }

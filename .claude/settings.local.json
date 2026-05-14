@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(dir \"c:\\\\Users\\\\egork\\\\Desktop\\\\wedding-invitation\")"
+      "Bash(dir \"c:\\\\Users\\\\egork\\\\Desktop\\\\wedding-invitation\")",
+      "Bash(npm install *)"
     ]
   }
 }
