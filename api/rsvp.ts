@@ -18,6 +18,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   const { _subject, message } = req.body as { _subject: string; message: string }
 
+  console.log('SMTP_USER defined:', !!process.env.SMTP_USER, '| SMTP_PASS defined:', !!process.env.SMTP_PASS)
+
   try {
     await transporter.sendMail({
       from: process.env.SMTP_USER,
