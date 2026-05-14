@@ -39,6 +39,10 @@ export function useBackgroundMusic({
       onplayerror: () => {
         setPlaying(false)
         setLoading(false)
+        // iOS may block play() on first attempt — retry once audio is unlocked
+        howlRef.current?.once('unlock', () => {
+          howlRef.current?.play()
+        })
       },
     })
     howlRef.current = sound
@@ -52,17 +56,18 @@ export function useBackgroundMusic({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [src])
 
-  const toggle = async () => {
+  const toggle = () => {
     const h = howlRef.current
     if (!h) return
     if (h.playing()) {
       h.pause()
     } else {
       setLoading(true)
-      // iOS Safari and some desktop browsers start AudioContext in "suspended" state.
-      // Must call resume() synchronously inside a user gesture handler before play().
+      // iOS Safari starts AudioContext in "suspended" state.
+      // resume() must be called synchronously within the user gesture — no await,
+      // because await yields to microtask queue and iOS revokes the gesture context.
       if (Howler.ctx && Howler.ctx.state !== 'running') {
-        try { await Howler.ctx.resume() } catch { /* ignore */ }
+        Howler.ctx.resume().catch(() => {})
       }
       h.play()
     }

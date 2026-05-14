@@ -261,6 +261,7 @@ export default function CoverSlide({
                   step={0.01}
                   value={volume}
                   onChange={(e) => onVolumeChange(Number(e.target.value))}
+                  onInput={(e) => onVolumeChange(Number((e.target as HTMLInputElement).value))}
                   className="w-28 sm:w-36 accent-rose cursor-pointer"
                   aria-label="Громкость"
                 />
