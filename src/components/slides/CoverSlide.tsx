@@ -1,5 +1,5 @@
-import { useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { motion } from "framer-motion";
 import { WEDDING } from "@/lib/constants";
 import FolkDivider from "../FolkDivider";
 import Balalaika from "../Balalaika";
@@ -8,89 +8,14 @@ import FolkFlower from "../FolkFlower";
 interface Props {
   playing: boolean;
   loading: boolean;
-  volume: number;
   onMusicToggle: () => void;
-  onVolumeChange: (v: number) => void;
-}
-
-function SpeakerIcon({
-  volume,
-  onClick,
-}: {
-  volume: number;
-  onClick: () => void;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      aria-label={volume === 0 ? "Включить звук" : "Выключить звук"}
-      className="text-rose/70 hover:text-rose transition-colors duration-200 flex-shrink-0"
-    >
-      <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current" aria-hidden>
-        {volume === 0 ? (
-          <>
-            <path
-              d="M16.5 12 A4.5 4.5 0 0 1 12 16.5"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              fill="none"
-              strokeLinecap="round"
-            />
-            <path d="M3 9v6h4l5 5V4L7 9H3z" />
-            <line
-              x1="20"
-              y1="4"
-              x2="4"
-              y2="20"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-            />
-          </>
-        ) : volume < 0.45 ? (
-          <>
-            <path d="M3 9v6h4l5 5V4L7 9H3z" />
-            <path
-              d="M15.5 8.5a5 5 0 0 1 0 7"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              fill="none"
-              strokeLinecap="round"
-            />
-          </>
-        ) : (
-          <>
-            <path d="M3 9v6h4l5 5V4L7 9H3z" />
-            <path
-              d="M15.5 8.5a5 5 0 0 1 0 7"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              fill="none"
-              strokeLinecap="round"
-            />
-            <path
-              d="M19 5a9 9 0 0 1 0 14"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              fill="none"
-              strokeLinecap="round"
-            />
-          </>
-        )}
-      </svg>
-    </button>
-  );
 }
 
 export default function CoverSlide({
   playing,
   loading,
-  volume,
   onMusicToggle,
-  onVolumeChange,
 }: Props) {
-  const prevVolumeRef = useRef(0.3);
   const [hasClickedMusic, setHasClickedMusic] = useState(false);
 
   const handleMusicToggle = () => {
@@ -233,44 +158,6 @@ export default function CoverSlide({
             />
           </motion.button>
 
-          {/* Регулятор громкости */}
-          <AnimatePresence>
-            {playing && (
-              <motion.div
-                initial={{ opacity: 0, y: -6 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -6 }}
-                transition={{ duration: 0.35, ease: "easeOut" }}
-                className="flex items-center justify-center gap-3"
-              >
-                <SpeakerIcon
-                  volume={volume}
-                  onClick={() => {
-                    if (volume > 0) {
-                      prevVolumeRef.current = volume;
-                      onVolumeChange(0);
-                    } else {
-                      onVolumeChange(prevVolumeRef.current);
-                    }
-                  }}
-                />
-                <input
-                  type="range"
-                  min={0}
-                  max={1}
-                  step={0.01}
-                  value={volume}
-                  onChange={(e) => onVolumeChange(Number(e.target.value))}
-                  onInput={(e) => onVolumeChange(Number((e.target as HTMLInputElement).value))}
-                  className="w-28 sm:w-36 accent-rose cursor-pointer"
-                  aria-label="Громкость"
-                />
-                <span className="font-bukva uppercase text-[16px] tracking-widest text-rose/60 w-7 text-right tabular-nums">
-                  {Math.round(volume * 100)}%
-                </span>
-              </motion.div>
-            )}
-          </AnimatePresence>
         </motion.div>
 
         {/* стрелка-приглашение скроллить */}

@@ -7,12 +7,12 @@ interface Options {
   loop?: boolean
 }
 
-export function useBackgroundMusic({ src, initialVolume = 0.3, loop = true }: Options) {
+export function useBackgroundMusic({ src, loop = true }: Options) {
   const howlRef = useRef<Howl | null>(null)
   const [playing, setPlaying] = useState(false)
   const [loading, setLoading] = useState(false)
-  const [volume, setVolumeState] = useState(initialVolume)
-  const volumeRef = useRef(initialVolume)
+  // const [volume, setVolumeState] = useState(initialVolume)
+  // const volumeRef = useRef(initialVolume)
   const mediaActionRef = useRef<(() => void) | null>(null)
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export function useBackgroundMusic({ src, initialVolume = 0.3, loop = true }: Op
       const h = new Howl({
         src: [src],
         loop,
-        volume: volumeRef.current,
+        volume: 1,
         preload: true,
         html5,
         onplay: () => {
@@ -61,7 +61,11 @@ export function useBackgroundMusic({ src, initialVolume = 0.3, loop = true }: Op
       return h
     }
 
-    howlRef.current = buildHowl(false)
+    // On iOS, Web Audio API (html5: false) respects the silent mode hardware switch
+    // and produces no sound from the speaker. HTML5 audio (<audio> element) bypasses
+    // silent mode on iOS and routes correctly through the speaker.
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
+    howlRef.current = buildHowl(isIOS)
 
     // OS-level media controls: lock screen, notification shade (Android / iOS)
     if ('mediaSession' in navigator) {
@@ -120,14 +124,12 @@ export function useBackgroundMusic({ src, initialVolume = 0.3, loop = true }: Op
   // Keep ref in sync so MediaSession handlers always call the current toggle
   useEffect(() => { mediaActionRef.current = toggle }, [toggle])
 
-  const setVolume = useCallback((v: number) => {
-    const clamped = Math.max(0, Math.min(1, v))
-    setVolumeState(clamped)
-    volumeRef.current = clamped
-    // Howler uses a Web Audio GainNode for volume — this works on iOS
-    // (unlike HTMLAudioElement.volume which is read-only on iOS)
-    howlRef.current?.volume(clamped)
-  }, [])
+  // const setVolume = useCallback((v: number) => {
+  //   const clamped = Math.max(0, Math.min(1, v))
+  //   setVolumeState(clamped)
+  //   volumeRef.current = clamped
+  //   howlRef.current?.volume(clamped)
+  // }, [])
 
-  return { playing, loading, volume, toggle, setVolume }
+  return { playing, loading, toggle }
 }
