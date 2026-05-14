@@ -51,7 +51,7 @@ export function formatGuestsForEmail(guests: GuestForm[]): string {
 export async function sendRSVP(guests: GuestForm[]): Promise<void> {
   const message = formatGuestsForEmail(guests)
 
-  const res = await fetch(`https://formsubmit.co/ajax/${TARGET_EMAIL}`, {
+  const res = await fetch('/api/rsvp', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
