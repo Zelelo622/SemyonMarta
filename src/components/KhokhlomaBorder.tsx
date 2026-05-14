@@ -3,10 +3,10 @@ interface Props {
 }
 
 export default function KhokhlomaBorder({ className = '' }: Props) {
-  const G = '#c89628'  // приглушённое янтарное золото
-  const R = '#b83020'  // мягкий терракотово-красный
-  const D = '#2a1508'  // тёплый тёмно-коричневый вместо чёрного
-  const N = '#4a7028'  // приглушённый лесной зелёный
+  const G = '#d4960a'
+  const R = '#c8200a'
+  const D = '#1c1205'
+  const N = '#3a6b20'
 
   return (
     <svg
@@ -19,12 +19,12 @@ export default function KhokhlomaBorder({ className = '' }: Props) {
       <rect width="640" height="80" fill={D} />
 
       {/* Gold border strips */}
-      <rect y="0" width="640" height="4" fill={G} opacity="0.75" />
-      <rect y="76" width="640" height="4" fill={G} opacity="0.75" />
+      <rect y="0" width="640" height="5" fill={G} />
+      <rect y="75" width="640" height="5" fill={G} />
 
       {/* Inner dashed lines */}
-      <line x1="0" y1="10" x2="640" y2="10" stroke={G} strokeWidth="0.7" strokeDasharray="4 5" opacity="0.4" />
-      <line x1="0" y1="70" x2="640" y2="70" stroke={G} strokeWidth="0.7" strokeDasharray="4 5" opacity="0.4" />
+      <line x1="0" y1="10.5" x2="640" y2="10.5" stroke={G} strokeWidth="0.8" strokeDasharray="4 5" opacity="0.55" />
+      <line x1="0" y1="69.5" x2="640" y2="69.5" stroke={G} strokeWidth="0.8" strokeDasharray="4 5" opacity="0.55" />
 
       {/* Main vine — gentle wave */}
       <path
@@ -53,9 +53,9 @@ export default function KhokhlomaBorder({ className = '' }: Props) {
         <circle cx="-8" cy="-19" r="5" fill={R} />
         <circle cx="0" cy="-21" r="5" fill={R} />
         <circle cx="8" cy="-19" r="5" fill={R} />
-        <circle cx="-7" cy="-20.5" r="1.6" fill="#d86050" opacity="0.45" />
-        <circle cx="1" cy="-22.5" r="1.6" fill="#d86050" opacity="0.45" />
-        <circle cx="9" cy="-20.5" r="1.6" fill="#d86050" opacity="0.45" />
+        <circle cx="-7" cy="-20.5" r="1.6" fill="#f06060" opacity="0.45" />
+        <circle cx="1" cy="-22.5" r="1.6" fill="#f06060" opacity="0.45" />
+        <circle cx="9" cy="-20.5" r="1.6" fill="#f06060" opacity="0.45" />
         <circle cx="-8" cy="-19" r="1.5" fill={D} />
         <circle cx="0" cy="-21" r="1.5" fill={D} />
         <circle cx="8" cy="-19" r="1.5" fill={D} />
@@ -71,9 +71,9 @@ export default function KhokhlomaBorder({ className = '' }: Props) {
         <circle cx="-8" cy="19" r="5" fill={R} />
         <circle cx="0" cy="21" r="5" fill={R} />
         <circle cx="8" cy="19" r="5" fill={R} />
-        <circle cx="-7" cy="18" r="1.6" fill="#d86050" opacity="0.45" />
-        <circle cx="1" cy="20" r="1.6" fill="#d86050" opacity="0.45" />
-        <circle cx="9" cy="18" r="1.6" fill="#d86050" opacity="0.45" />
+        <circle cx="-7" cy="18" r="1.6" fill="#f06060" opacity="0.45" />
+        <circle cx="1" cy="20" r="1.6" fill="#f06060" opacity="0.45" />
+        <circle cx="9" cy="18" r="1.6" fill="#f06060" opacity="0.45" />
         <circle cx="-8" cy="19" r="1.5" fill={D} />
         <circle cx="0" cy="21" r="1.5" fill={D} />
         <circle cx="8" cy="19" r="1.5" fill={D} />
