@@ -25,7 +25,6 @@ export default function App() {
     src: WEDDING.musicUrl,
     initialVolume: 0.3,
     loop: true,
-    autoplay: false,
   })
 
   return (
