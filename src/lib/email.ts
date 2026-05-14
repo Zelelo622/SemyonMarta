@@ -66,6 +66,6 @@ export async function sendRSVP(guests: GuestForm[]): Promise<void> {
 
   if (!res.ok) {
     const text = await res.text().catch(() => '')
-    throw new Error(`FormSubmit error ${res.status}: ${text}`)
+    throw new Error(`RSVP error ${res.status}: ${text}`)
   }
 }
