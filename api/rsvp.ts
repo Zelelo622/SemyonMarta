@@ -28,7 +28,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     return res.status(200).json({ success: true })
   } catch (err) {
-    console.error('SMTP error:', err)
-    return res.status(500).json({ error: 'Failed to send email' })
+    const message = err instanceof Error ? err.message : String(err)
+    console.error('SMTP error:', message)
+    return res.status(500).json({ error: message })
   }
 }
