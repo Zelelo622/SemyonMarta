@@ -137,7 +137,7 @@ function GuestRow({
             autoComplete="off"
           />
           {nameErr && (
-            <p className="text-rose text-[11px] mt-1 font-slav">
+            <p className="text-rose text-[14px] mt-1 font-slav">
               {nameErr.message as string}
             </p>
           )}
@@ -218,7 +218,7 @@ function GuestRow({
                         })}
                       </div>
                       {drinksErr && (
-                        <p className="text-rose text-[11px] mt-1 font-slav">
+                        <p className="text-rose text-[14px] mt-1 font-slav">
                           {drinksErr.message as string}
                         </p>
                       )}
@@ -279,7 +279,7 @@ function GuestRow({
                       placeholder="Укажите аллергии или ограничения"
                     />
                     {allergyDetailErr && (
-                      <p className="text-rose text-[11px] mt-1 font-slav">
+                      <p className="text-rose text-[14px] mt-1 font-slav">
                         {allergyDetailErr.message as string}
                       </p>
                     )}
@@ -374,7 +374,7 @@ function GuestRow({
                           placeholder="Укажите адрес назначения"
                         />
                         {transferAddrErr && (
-                          <p className="text-rose text-[11px] mt-1 font-slav">
+                          <p className="text-rose text-[14px] mt-1 font-slav">
                             {transferAddrErr.message as string}
                           </p>
                         )}
