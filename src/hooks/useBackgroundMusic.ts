@@ -18,6 +18,7 @@ export function useBackgroundMusic({
   const [playing, setPlaying] = useState(false)
   const [loading, setLoading] = useState(false)
   const [volume, setVolumeState] = useState(initialVolume)
+<<<<<<< HEAD
   const volumeRef = useRef(initialVolume)
   const ctxCleanupRef = useRef<(() => void) | null>(null)
 
@@ -74,6 +75,31 @@ export function useBackgroundMusic({
 
   useEffect(() => {
     const sound = makeHowl(volumeRef.current)
+=======
+
+  useEffect(() => {
+    // Web Audio API (default): preload fetches via XHR and decodes into a buffer —
+    // XHR is not blocked by iOS before user gesture, so the file is ready by first tap.
+    // Volume is controlled via GainNode, which works on iOS (unlike <audio>.volume).
+    const sound = new Howl({
+      src: [src],
+      loop,
+      volume: initialVolume,
+      preload: true,
+      onload: () => setLoading(false),
+      onplay: () => { setPlaying(true); setLoading(false) },
+      onpause: () => setPlaying(false),
+      onstop: () => setPlaying(false),
+      onend: () => {
+        if (!loop) setPlaying(false)
+      },
+      onloaderror: () => setLoading(false),
+      onplayerror: () => {
+        setPlaying(false)
+        setLoading(false)
+      },
+    })
+>>>>>>> parent of b694af8 (музло)
     howlRef.current = sound
 
     // Howler.ctx is created synchronously by new Howl({preload:true})
@@ -93,14 +119,21 @@ export function useBackgroundMusic({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [src])
 
-  const toggle = () => {
+  const toggle = async () => {
     const h = howlRef.current
     if (!h) return
-
     if (h.playing()) {
       h.pause()
-      return
+    } else {
+      setLoading(true)
+      // iOS Safari and some desktop browsers start AudioContext in "suspended" state.
+      // Must call resume() synchronously inside a user gesture handler before play().
+      if (Howler.ctx && Howler.ctx.state !== 'running') {
+        try { await Howler.ctx.resume() } catch { /* ignore */ }
+      }
+      h.play()
     }
+<<<<<<< HEAD
 
     setLoading(true)
 
@@ -111,12 +144,13 @@ export function useBackgroundMusic({
     }
 
     h.play()
+=======
+>>>>>>> parent of b694af8 (музло)
   }
 
   const setVolume = (v: number) => {
     const clamped = Math.max(0, Math.min(1, v))
     setVolumeState(clamped)
-    volumeRef.current = clamped
     howlRef.current?.volume(clamped)
   }
 
