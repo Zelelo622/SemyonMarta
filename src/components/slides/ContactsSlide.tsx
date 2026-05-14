@@ -64,7 +64,7 @@ export default function ContactsSlide({ visible }: SlideProps) {
           >
             <p className="chapter-mark mb-2">Жених</p>
             <p
-              className="font-marck text-rose mb-2"
+              className="font-slav text-rose mb-2"
               style={{ fontSize: 'clamp(2rem, 6vw, 2.5rem)' }}
             >
               {WEDDING.contacts.groom.name}
@@ -84,7 +84,7 @@ export default function ContactsSlide({ visible }: SlideProps) {
           >
             <p className="chapter-mark mb-2">Невеста</p>
             <p
-              className="font-marck text-rose mb-2"
+              className="font-slav text-rose mb-2"
               style={{ fontSize: 'clamp(2rem, 6vw, 2.5rem)' }}
             >
               {WEDDING.contacts.bride.name}
@@ -103,7 +103,7 @@ export default function ContactsSlide({ visible }: SlideProps) {
         <FolkDivider className="max-w-[280px] w-full mx-auto mt-8 mb-5" />
 
         <p
-          className="font-marck text-rose"
+          className="font-slav text-rose"
           style={{ fontSize: 'clamp(1.8rem, 6vw, 2.6rem)' }}
         >
           С любовью,

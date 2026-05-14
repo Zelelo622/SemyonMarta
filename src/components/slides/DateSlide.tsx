@@ -129,7 +129,7 @@ export default function DateSlide({ visible }: SlideProps) {
         </div>
 
         <div className="mb-10 sm:mb-12">
-          <p className="font-marck text-rose text-center mb-4"
+          <p className="font-slav text-rose text-center mb-4"
              style={{ fontSize: 'clamp(2rem, 7vw, 3rem)' }}>
             Дорог{guestName ?? 'ие наши гости'}!
           </p>

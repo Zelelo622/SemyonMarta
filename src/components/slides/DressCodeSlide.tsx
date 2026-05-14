@@ -163,7 +163,7 @@ export default function DressCodeSlide({ visible }: SlideProps) {
             className="flex flex-col items-center"
           >
             <Kokoshnik className="w-28 sm:w-36" />
-            <p className="font-marck text-rose mt-3 text-2xl">
+            <p className="font-slav text-rose mt-3 text-2xl">
               Кокошник
             </p>
           </motion.div>
@@ -174,11 +174,11 @@ export default function DressCodeSlide({ visible }: SlideProps) {
             className="flex flex-col items-center"
           >
             <Lapti className="w-28 sm:w-36" />
-            <p className="font-marck text-rose mt-3 text-2xl">Лапти</p>
+            <p className="font-slav text-rose mt-3 text-2xl">Лапти</p>
           </motion.div>
         </div> */}
 
-        <p className="text-center font-marck text-ink-muted text-xl mt-10 mb-6">
+        <p className="text-center font-slav text-ink-muted text-xl mt-10 mb-6">
           ...а если приглянутся — то и обернуться!
         </p>
       </motion.div>

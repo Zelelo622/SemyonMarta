@@ -142,7 +142,7 @@ export default function CoverSlide({
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.5, duration: 1.1 }}
-          className="font-marck text-ink leading-[0.95] text-balance text-center"
+          className="font-slav text-ink leading-[0.95] text-balance text-center"
           style={{ fontSize: "clamp(3.5rem, 14vw, 7rem)" }}
         >
           <div>{WEDDING.groomName}</div>
