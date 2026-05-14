@@ -125,7 +125,7 @@
 
   .chapter-mark {
     @apply font-bukva text-rose uppercase
-           text-[34px] sm:text-[24px] tracking-widest3;
+           text-[34px] sm:text-[52px] tracking-widest3;
   }
 
   .chapter-mark-2 {
