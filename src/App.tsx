@@ -4,6 +4,7 @@ import { useSlideTracking } from '@/hooks/useSlideTracking'
 import { useBackgroundMusic } from '@/hooks/useBackgroundMusic'
 
 import MusicToggle from '@/components/MusicToggle'
+import KhokhlomaBorder from '@/components/KhokhlomaBorder'
 
 import CoverSlide from '@/components/slides/CoverSlide'
 import DateSlide from '@/components/slides/DateSlide'
@@ -38,12 +39,19 @@ export default function App() {
 
       <main ref={containerRef} className="relative">
         <CoverSlide playing={playing} loading={loading} volume={volume} onMusicToggle={toggle} onVolumeChange={setVolume} />
+        <KhokhlomaBorder />
         <DateSlide visible={visible.has(1)} />
+        <KhokhlomaBorder />
         <VenueSlide visible={visible.has(2)} />
+        <KhokhlomaBorder />
         <ProgramSlide visible={visible.has(3)} />
+        <KhokhlomaBorder />
         <DressCodeSlide visible={visible.has(4)} />
+        <KhokhlomaBorder />
         <DetailsSlide visible={visible.has(5)} />
+        <KhokhlomaBorder />
         <RSVPSlide visible={visible.has(6)} />
+        <KhokhlomaBorder />
         <ContactsSlide visible={visible.has(7)} />
       </main>
     </>

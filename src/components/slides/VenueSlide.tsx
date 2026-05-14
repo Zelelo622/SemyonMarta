@@ -11,11 +11,11 @@ export default function VenueSlide({ visible }: SlideProps) {
       className="slide-base above-paper slide-base-2"
     >
       <FolkFlower
-        className="absolute -top-4 -left-4 w-24 sm:w-32 opacity-50"
+        className="absolute top-4 left-4 w-16 sm:w-32 opacity-50"
         color="#b32015"
       />
       <FolkFlower
-        className="absolute -bottom-4 -right-4 w-24 sm:w-32 opacity-50 rotate-180"
+        className="absolute bottom-4 right-4 w-16 sm:w-32 opacity-50 rotate-180"
         color="#b32015"
       />
 
