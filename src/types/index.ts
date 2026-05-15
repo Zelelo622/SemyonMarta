@@ -15,6 +15,7 @@ export interface SlideProps {
 
 export type DrinkValue =
   | 'wine'
+  | 'champagne'
   | 'vodka'
   | 'cognac'
   | 'whiskey'

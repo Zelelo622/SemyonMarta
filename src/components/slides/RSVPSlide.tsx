@@ -7,7 +7,6 @@ import {
   type SubmitHandler,
 } from "react-hook-form";
 import { sendRSVP } from "@/lib/email";
-import { WEDDING } from "@/lib/constants";
 import ChapterHeader from "../ChapterHeader";
 import FolkDivider from "../FolkDivider";
 import type { RSVPForm, GuestForm, SlideProps, DrinkValue } from "@/types";
@@ -16,6 +15,7 @@ const MAX_GUESTS = 8;
 
 const DRINK_OPTIONS: { value: DrinkValue; label: string }[] = [
   { value: "wine", label: "Вино" },
+  { value: "champagne", label: "Шампанское" },
   { value: "vodka", label: "Водка" },
   { value: "cognac", label: "Коньяк" },
   { value: "whiskey", label: "Виски" },

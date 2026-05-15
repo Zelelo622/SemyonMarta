@@ -1,9 +1,8 @@
 import type { GuestForm } from '@/types'
 
-const TARGET_EMAIL = 'svd36@inbox.ru'
-
 const drinkMap: Record<string, string> = {
   wine: 'Вино',
+  champagne: 'Шампанское',
   vodka: 'Водка',
   cognac: 'Коньяк',
   whiskey: 'Виски',
